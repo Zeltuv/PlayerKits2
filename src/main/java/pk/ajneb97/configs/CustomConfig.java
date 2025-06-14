@@ -4,7 +4,9 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import pk.ajneb97.PlayerKits2;
-import java.io.*;
+
+import java.io.File;
+import java.io.IOException;
 
 public class CustomConfig {
 

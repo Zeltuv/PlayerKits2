@@ -1,6 +1,8 @@
 
 package pk.ajneb97;
 
+import com.tcoded.folialib.FoliaLib;
+import com.tcoded.folialib.impl.PlatformScheduler;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,19 +14,25 @@ import pk.ajneb97.listeners.InventoryEditListener;
 import pk.ajneb97.listeners.OtherListener;
 import pk.ajneb97.listeners.PlayerListener;
 import pk.ajneb97.managers.*;
-import pk.ajneb97.managers.dependencies.Metrics;
 import pk.ajneb97.managers.edit.InventoryEditManager;
 import pk.ajneb97.model.internal.UpdateCheckerResult;
 import pk.ajneb97.tasks.InventoryUpdateTaskManager;
 import pk.ajneb97.tasks.PlayerDataSaveTask;
-import pk.ajneb97.versions.NMSManager;
 import pk.ajneb97.utils.ServerVersion;
+import pk.ajneb97.versions.NMSManager;
 
 public class PlayerKits2 extends JavaPlugin {
 
     public String version = getDescription().getVersion();
     public static String prefix;
     public static ServerVersion serverVersion;
+
+    private static FoliaLib foliaLib;
+
+    public static PlatformScheduler getScheduler() {
+        return foliaLib.getScheduler();
+    }
+
 
     private KitItemManager kitItemManager;
     private KitsManager kitsManager;
@@ -44,6 +52,8 @@ public class PlayerKits2 extends JavaPlugin {
     private MySQLConnection mySQLConnection;
 
     public void onEnable(){
+        foliaLib = new FoliaLib(this);
+
         setVersion();
         setPrefix();
         registerCommands();
@@ -79,7 +89,6 @@ public class PlayerKits2 extends JavaPlugin {
         if(getServer().getPluginManager().getPlugin("PlaceholderAPI") != null){
             new ExpansionPlayerKits(this).register();
         }
-        Metrics metrics = new Metrics(this,19795);
 
         Bukkit.getConsoleSender().sendMessage(MessagesManager.getColoredMessage(prefix+"&eHas been enabled! &fVersion: "+version));
         Bukkit.getConsoleSender().sendMessage(MessagesManager.getColoredMessage(prefix+"&eThanks for using my plugin!   &f~Ajneb97"));

@@ -1,4 +1,5 @@
 package pk.ajneb97.managers;
+
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pk.ajneb97.PlayerKits2;
@@ -7,7 +8,6 @@ import pk.ajneb97.model.PlayerData;
 import pk.ajneb97.model.internal.PlayerKitsMessageResult;
 import pk.ajneb97.utils.OtherUtils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;

@@ -1,7 +1,6 @@
 package pk.ajneb97.managers;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -20,12 +19,10 @@ import pk.ajneb97.model.inventory.InventoryPlayer;
 import pk.ajneb97.model.inventory.ItemKitInventory;
 import pk.ajneb97.model.inventory.KitInventory;
 import pk.ajneb97.model.item.KitItem;
-import pk.ajneb97.utils.ActionUtils;
 import pk.ajneb97.utils.ItemUtils;
 import pk.ajneb97.utils.PlayerUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class InventoryManager {

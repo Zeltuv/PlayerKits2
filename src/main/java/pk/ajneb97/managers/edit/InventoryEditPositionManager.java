@@ -7,9 +7,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.scheduler.BukkitRunnable;
 import pk.ajneb97.PlayerKits2;
-import pk.ajneb97.managers.*;
+import pk.ajneb97.managers.InventoryManager;
+import pk.ajneb97.managers.KitItemManager;
+import pk.ajneb97.managers.KitsManager;
+import pk.ajneb97.managers.MessagesManager;
 import pk.ajneb97.model.Kit;
 import pk.ajneb97.model.internal.KitVariable;
 import pk.ajneb97.model.inventory.InventoryPlayer;
@@ -146,13 +148,10 @@ public class InventoryEditPositionManager {
     public void closeInventory(InventoryPlayer inventoryPlayer){
         boolean mustReturn = Boolean.parseBoolean(inventoryPlayer.getInventoryName().split(";")[2]);
         if(mustReturn){
-            new BukkitRunnable(){
-                @Override
-                public void run() {
-                    inventoryPlayer.restoreSavedInventoryContents();
-                    inventoryEditManager.openInventory(inventoryPlayer);
-                }
-            }.runTaskLater(plugin,1L);
+            PlayerKits2.getScheduler().runLater(wrappedTask -> {
+                inventoryPlayer.restoreSavedInventoryContents();
+                inventoryEditManager.openInventory(inventoryPlayer);
+            },1L);
         }
     }
 }

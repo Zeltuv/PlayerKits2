@@ -1,6 +1,5 @@
 package pk.ajneb97.managers;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
